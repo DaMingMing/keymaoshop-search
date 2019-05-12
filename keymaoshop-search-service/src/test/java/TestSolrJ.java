@@ -8,7 +8,7 @@ public class TestSolrJ {
     public void addDocument() throws Exception {
         // 第一步：把solrJ的jar包添加到工程中。
         // 第二步：创建一个SolrServer，使用HttpSolrServer创建对象。
-        SolrServer solrServer = new HttpSolrServer("http://192.168.27.106:8080/solr");
+        SolrServer solrServer = new HttpSolrServer("http://192.168.27.106:8080/solr/collection1");
         // 第三步：创建一个文档对象SolrInputDocument对象。
         SolrInputDocument document = new SolrInputDocument();
         // 第四步：向文档中添加域。必须有id域，域的名称必须在schema.xml中定义。
@@ -25,7 +25,7 @@ public class TestSolrJ {
     @Test
     public void deleteDocumentById() throws Exception {
         // 第一步：创建一个SolrServer对象。
-        SolrServer solrServer = new HttpSolrServer("http://192.168.27.106:8080/solr");
+        SolrServer solrServer = new HttpSolrServer("http://192.168.27.106:8080/solr/collection1");
         // 第二步：调用SolrServer对象的根据id删除的方法。
         solrServer.deleteById("test001");
         // 第三步：提交。
