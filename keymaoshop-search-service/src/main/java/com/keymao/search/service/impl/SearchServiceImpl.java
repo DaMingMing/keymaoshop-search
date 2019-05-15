@@ -1,7 +1,7 @@
 package com.keymao.search.service.impl;
 
 import com.keymao.common.pojo.SearchResult;
-import com.keymao.search.SearchDao;
+import com.keymao.search.dao.SearchDao;
 import com.keymao.search.service.SearchService;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +25,7 @@ public class SearchServiceImpl implements SearchService {
         //设置查询条件
         query.setQuery(keyWord);
         //设置分页条件
+        if(page <= 0) page = 1;
         query.setStart((page - 1) * rows);
         //设置rows
         query.setRows(rows);

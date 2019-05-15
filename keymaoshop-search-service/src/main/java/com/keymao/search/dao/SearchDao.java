@@ -1,4 +1,4 @@
-package com.keymao.search;
+package com.keymao.search.dao;
 
 import com.keymao.common.pojo.SearchItem;
 import com.keymao.common.pojo.SearchResult;
