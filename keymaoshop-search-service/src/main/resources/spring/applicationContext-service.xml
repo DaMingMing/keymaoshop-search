@@ -11,7 +11,7 @@
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
 
 	<!-- 配置包扫描器 -->
-	<context:component-scan base-package="com.keymao.search"/>
+	<context:component-scan base-package="com.keymao.search.service,com.keymao.search.dao"/>
 
 	<!-- 使用dubbo发布服务 -->
 	<!-- 提供方应用信息，用于计算依赖关系 -->
@@ -23,5 +23,8 @@
 
 	<!-- 声明需要暴露的服务接口 timeout超时时间，单位为毫秒--><!-- timeout="100000"-->
 	<dubbo:service interface="com.keymao.search.service.SearchItemService" ref="searchItemServiceImpl" timeout="100000" retries="5"/>
+    <dubbo:service interface="com.keymao.search.service.SearchService" ref="searchServiceImpl" timeout="100000" retries="5"/>
+
+
 
 </beans>
