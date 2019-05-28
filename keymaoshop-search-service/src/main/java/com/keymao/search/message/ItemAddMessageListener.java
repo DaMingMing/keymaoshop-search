@@ -30,6 +30,9 @@ public class ItemAddMessageListener implements MessageListener {
             TextMessage textMessage = (TextMessage) message;
             String text = textMessage.getText();
             Long itemId = new Long(text);
+            //等待事务提交，此处休眠是因为添加商品之后事务可能还没有提交，这时候如果通过ID获取商品就获取不到。
+            //也可以直接在商品添加的控制层发送到MQ，就无需休眠
+            Thread.sleep(1000);
             //根据商品ID查询商品信息
             SearchItem searchItem = itemMapper.getItemById(itemId);
             //创建文档对象
@@ -50,6 +53,8 @@ public class ItemAddMessageListener implements MessageListener {
         } catch (SolrServerException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
